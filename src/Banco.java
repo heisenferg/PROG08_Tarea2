@@ -81,7 +81,7 @@ public class Banco {
 
 
 
-//Ingreso cuenta.
+//INGRESO CUENTA.
 
     public boolean ingresoCuenta(String iban, double ingreso){
         if (ingreso == 0) {
