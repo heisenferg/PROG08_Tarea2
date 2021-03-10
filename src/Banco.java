@@ -94,7 +94,7 @@ public class Banco {
         return false;
     }
 
-//SACAr dinero
+//SACAr DINERO
 
     public boolean retiradaCuenta(String iban, double retirada) {
         if (retirada == 0) {
