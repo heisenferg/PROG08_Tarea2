@@ -152,8 +152,6 @@ public class Main {
                         String ibanBuscar = banco.informacionCuenta(iban);
                         if (ibanBuscar != null) {
                             System.out.println(ibanBuscar);
-                        } else {
-                            System.out.println("El IBAN no está guardado.");
                         }
                         break;
                     case 4:

@@ -78,7 +78,7 @@ public  class  CuentaBancaria implements Imprimible {
      */
     public static boolean cIban(String iban) {
         boolean comprobar = true;
-        Pattern matr = Pattern.compile("[ES]+([0-9]{20})");
+        Pattern matr = Pattern.compile("[ES]+([0-9]{5})");
         Matcher mat = matr.matcher(iban);
         comprobar = mat.matches();
         return comprobar;
@@ -119,7 +119,7 @@ public  class  CuentaBancaria implements Imprimible {
     }
 
     public boolean retiradaCuenta(double retirada){
-        if (retirada > saldo) {
+        if (retirada < saldo) {
             saldo = saldo - retirada;
             return true;
         } else {

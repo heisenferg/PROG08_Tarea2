@@ -43,13 +43,13 @@ Constructores.
     }
 
     @Override
-    public boolean retiradaCuenta(double cantidad) {
+    public boolean retiradaCuenta(double retirada) {
 
-        if (cantidad < saldo){
-            saldo = saldo-cantidad;
+        if (retirada < saldo){
+            saldo = saldo-retirada;
             return true;
-        }else
-            System.out.println("la cantidad tiene que ser inferior al saldo");
+        }else if (saldo < retirada);
+            System.out.println("la cantidad tiene que ser inferior al saldo.");
         return false;
     }
 

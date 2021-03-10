@@ -65,7 +65,7 @@ public class CuentaCorrienteEmpresa extends CuentaBancaria{
     @Override
     public String devolverInfoString() {
         return super.devolverInfoString() + " con un interés de descibierto de  "  + interes_descubierto + "%, con una cantidad máxima disponible por descubierto de "
-                + maximo_descubierto + " euros,una comisión por descubierto de " + comision_descubierto + "%. Entidades de cobro: " + entidades_cobro + ".";
+                + maximo_descubierto + " euros,una comisión por descubierto de " + comision_descubierto + " euros. Entidades de cobro: " + entidades_cobro + ".";
 
     }
 
