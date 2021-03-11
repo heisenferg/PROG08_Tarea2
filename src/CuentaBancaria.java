@@ -78,7 +78,7 @@ public  class  CuentaBancaria implements Imprimible {
      */
     public static boolean cIban(String iban) {
         boolean comprobar = true;
-        Pattern matr = Pattern.compile("[ES]+([0-9]{5})");
+        Pattern matr = Pattern.compile("[ES]+([0-9]{20})");
         Matcher mat = matr.matcher(iban);
         comprobar = mat.matches();
         return comprobar;

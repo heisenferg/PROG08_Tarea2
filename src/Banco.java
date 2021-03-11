@@ -166,37 +166,7 @@ public class Banco {
             }
 
         }
-/*
-        CuentaBancaria cCuenta;
 
-        cCuenta = buscarCuenta();
-        if(cCuenta == null){
-            System.out.println("El dni introducido no pertenece a ningún cliente");
-            return;
-        }
-
-
-        System.out.println("¿Está seguro de que desea borrar al cliente "+ cliente +
-                "\nSi desea borrarlo introduzca 'S' en caso contrario introduzca 'N'");
-
-        String opcion;
-        try {
-            do {
-                opcion = entradaDatos.readLine().toUpperCase();
-                if (!opcion.equals("N") && !opcion.equals("S"))
-                    System.err.println("Pulse 'S' para borrar y 'N' para salir");
-                if (opcion.equals("S")) {
-                    clientes.remove(cliente);
-                    escribirArchivo();
-                    System.out.println("Se ha eliminado correctamente el resgistro del cliente");
-                }
-            } while (!opcion.equals("S") && !opcion.equals("N"));
-
-        } catch (IOException ioe) {
-            System.err.printf("Fallo al borrar al cliente %s del archivo", ioe.getMessage());
-        }
-    }
-*/
     }
 }
 
