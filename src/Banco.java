@@ -149,30 +149,6 @@ public class Banco {
 
 
 
-//SACAr dinero
-
-    public boolean retiradaCuenta(String iban, float retirada){
-        if (retirada == 0) {
-            throw new IllegalArgumentException("El importe a retirar no puede ser cero.");
-        }
-        if (retirada < 0) {
-            throw new IllegalArgumentException("El importe a retirar no puede ser negativo.");
-        }
-
-        for (int i=0; i<Ncuentas; i++){
-            if (listCuenta[i].getIban().equals(iban)){
-                if (listCuenta[i].getSaldo()< retirada) {
-                    System.out.println("NO hay fondos suficientes.");
-                    break;
-                }
-
-                listCuenta[i].saldoRetirado(retirada);
-                System.out.println("Retirada de dinero realizada correctamente.");
-                return true;
-            }
-        }
-        return false;
-    }
 
 //Ver saldo.
 
