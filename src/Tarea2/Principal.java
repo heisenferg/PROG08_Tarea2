@@ -4,6 +4,8 @@ package Tarea2;
  *
  * @author Fernando Fernández Robledo
  */
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -78,16 +80,18 @@ public class Principal {
 
         //Llamo concesionario de la clase concesionario.
         concesionario concesionario = new concesionario();
+        Vehiculo v1 = new Vehiculo();
 
         //Menú princupal con 5 opciones, siendo la 5 salir.
-        while (opcion != 5) {
+        while (opcion != 6) {
 
             try {
                 System.out.println("1. Crear vehículo.");
                 System.out.println("2. Listar vehículos.");
                 System.out.println("3. Buscar vehículos.");
                 System.out.println("4. Actualizar Kms.");
-                System.out.println("5. Salir.");
+                System.out.println("5. Eliminar vehículo.");
+                System.out.println("6. Salir.");
                 opcion = teclado.nextInt();
 
                 switch (opcion) {
@@ -103,6 +107,7 @@ public class Principal {
                         //MATRÍCULA.
                         System.out.print("Introduce la matrícula: ");
                         matricula = teclado.next();
+                        v1.setMatricula(matricula);
                         if (!cMatricula(matricula)) {
                             throw new Exception("La forma de la matrícula no es correcta.");
                         }
@@ -143,9 +148,6 @@ public class Principal {
                             case -1:
                                 System.out.println(concesionario.MATRICULA_GUARDADA);
                                 break;
-                            case -2:
-                                System.out.println(concesionario.LLENO);
-                                break;
                             case 0:
                                 System.out.println(concesionario.GUARDADO);
                                 break;
@@ -181,7 +183,13 @@ public class Principal {
                         System.out.print("Introduce los Kms. actualizados: ");
                         km = teclado.nextInt();
                         concesionario.actualizarKM(matricula, km);
-
+                        break;
+                    case 5:
+                        System.out.println("ELIMINAR VEHÍCULO DEL SISTEMA.");
+                        System.out.println("------------------------------");
+                        System.out.println("Introduce la matricula del vehículo a eliminar");
+                        matricula = teclado.next();
+                        concesionario.eliminarVehiculo(matricula);
                         break;
                 }
                 //EXCEPCIÓN DEL MENÚ

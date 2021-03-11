@@ -1,6 +1,9 @@
 package Tarea2;
 
 
+import java.util.HashSet;
+import java.util.TreeSet;
+
 /**
  *
  * @author Fernando Fernández Robledo
@@ -9,30 +12,28 @@ package Tarea2;
 
 public class concesionario {
 
-
-    private Vehiculo[] listVehiculo;
-    private int Nvehiculos;
-    public static final int CAPACIDAD = 50;
+/*
+Utilizo una estructura de datos dinámica de tipo HashSet al ser una esta interfaz que es un tipo
+de Collection que almacena datos asociando una llave a un valor, lo cual acelera en gran medida
+ el acceso a los objetos almacenado dentro de ella.
+ Como inconveniente cabría destacar que necesitan mucha memoria y no almacenan los objetos de forma ordenada
+ pero en este caso, no estamos tratando con muchos datos (con lo cual el consumo de memoria no será grande en absoluto),
+  y nosotros lo ordenamos por matrícula gracias a implementar "Compareto" en la clase Vehículo.
+ */
+    HashSet<Vehiculo> coches = new HashSet<Vehiculo>();
     public static final int GUARDADO = 0;
-    public static final int LLENO = -1;
     public static final int MATRICULA_GUARDADA = -2;
+    Vehiculo vehiculo = new Vehiculo();
 
-    /*Declaramos el constructor inicializando el número de vehículos en 0
-    y determinando el array con el máximo de capacidad.
-    */
-
-
-    public concesionario() {
-        Nvehiculos = 0;
-        listVehiculo = new Vehiculo[CAPACIDAD];
-    }
 
     //BUSCAR VEHÍCULO
 
     public String buscarVehiculo (String matricula){
-        for (int i=0; i<Nvehiculos;i++){
-            if (listVehiculo[i].getMatricula().equals(matricula)){
-                return listVehiculo[i].toString();
+        Vehiculo v1 = new Vehiculo();
+        for (Vehiculo vehiculo: coches){
+            if (vehiculo.getMatricula().equals(matricula)){
+                 vehiculo = v1;
+                 return v1.toString();
             }
         }
         return null;
@@ -49,12 +50,10 @@ public class concesionario {
     public int insertarVehiculo(String marca, String matricula, String descripcion, String Nprop, String Dniprop, int km, double precio){
         if (buscarVehiculo(matricula) != null){
             return MATRICULA_GUARDADA;
-        }else if(Nvehiculos == listVehiculo.length){
-            return LLENO;
         }else {
-            Vehiculo vehiculo = new Vehiculo (marca, matricula, descripcion, Nprop, Dniprop, km, precio);
-            listVehiculo [Nvehiculos] = vehiculo;
-            Nvehiculos++;
+            Vehiculo v1 = new Vehiculo(marca, matricula, descripcion, Nprop, Dniprop, km, precio);
+            coches.add(v1);
+            System.out.println("Insertado correctamente.");
             return GUARDADO;
         }
     }
@@ -64,8 +63,8 @@ public class concesionario {
     creado en la clase vehículo.
     */
     public void listarVehiculo(){
-        for (int i =0; i<Nvehiculos; i++){
-            System.out.println((i+1)+". " + listVehiculo[i].toString());
+        for (Vehiculo v1: coches){
+            System.out.println(v1.toString());
         }
     }
 
@@ -74,15 +73,34 @@ public class concesionario {
     por los nuevos que nos pida por consola.
     */
     public boolean actualizarKM (String matricula, int km){
-        for (int i=0; i<Nvehiculos; i++){
-            if (listVehiculo[i].getMatricula().equals(matricula)){
-                listVehiculo[i].setKm(km);
+        for (Vehiculo v1: coches){
+            if (v1.getMatricula().equals(matricula)){
+                v1.setKm(km);
+                System.out.println("Kilómetros actualizados.");
                 return true;
             }
         }
         return false;
     }
-}
+
+    //Método para eliminar vehículos.
+
+    public void eliminarVehiculo(String matricula){
+        for (Vehiculo v1: coches){
+            if (v1.getMatricula().equals(matricula)){
+                coches.remove(v1);
+                System.out.println("El vehículo con matrícula " + v1.getMatricula() + " ha sido eliminado correctamente.");
+                break;
+            }
+            else
+                System.out.println("No existe vehículo con esa matrícula.\nNo se puede eliminar.");
+                break;
+            }
+        }
+
+    }
+
+
 
 
 

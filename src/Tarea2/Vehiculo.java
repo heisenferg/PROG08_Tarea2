@@ -15,11 +15,12 @@ import java.util.Comparator;
  * @return
  *
  */
-class Vehiculo {
+class Vehiculo implements Comparable<Vehiculo>{
 
     private String marca, matricula, Nprop, descripcion, Dniprop;
     private int km;
     private double precio;
+
 
     public Vehiculo() {
     }
@@ -32,15 +33,30 @@ class Vehiculo {
         this.Dniprop = Dniprop;
         this.km = km;
         this.precio = precio;
+
+
     }
 
     @Override
+    public int compareTo (Vehiculo o){
+        if (this.matricula.compareTo(o.matricula) >= 0){
+            return 1;
+        } else if (this.matricula.compareTo(o.matricula) <= 0){
+            return -1;
+        }
+        return 0;
+
+    }
+
+
+
+    @Override
     public String toString() {
-        return "El vehiculo marca " + marca + ", con matricula "
+        return "[El vehiculo marca " + marca + ", con matricula "
                 + matricula + ", pertenece a " + Nprop
-                + ", con DNI " + Dniprop + ".\n Tiene un total de "
+                + ", con DNI " + Dniprop + ".\nTiene un total de "
                 + km + " kms. y un precio de " + precio
-                + " euros." + "\n Descripción: " + descripcion;
+                + " euros." + "\nDescripción: " + descripcion + "]";
     }
 
     public String getMarca() {
@@ -103,13 +119,7 @@ class Vehiculo {
         this.km += km;
     }
 
-    class comparadorMatriculas implements Comparator<Vehiculo>{
 
-        @Override
-        public int compare(Vehiculo o1, Vehiculo o2) {
-            return o1.matricula.compareTo(o2.matricula);
-        }
-    }
 }
 
 
