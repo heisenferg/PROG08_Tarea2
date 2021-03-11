@@ -35,7 +35,7 @@ public class Main {
 
 
 //Menú principal
-        while(opcion!=7) {
+        while(opcion!=8) {
             try{
                 System.out.println("\nIntroduce alguna de las opciones siguientes: \n");
                 System.out.println("1. Abrir una nueva cuenta.");
@@ -44,7 +44,8 @@ public class Main {
                 System.out.println("4. Realizar un ingreso.");
                 System.out.println("5. Retirar efectivo de una cuenta.");
                 System.out.println("6. Consultar el saldo actual de una cuenta.");
-                System.out.println("7. Salir de la aplicación.");
+                System.out.println("7. Eliminar una cuenta.");
+                System.out.println("8. Salir de la aplicación.");
                 opcion = teclado.nextInt();
 
                 //Switch de opciones
@@ -178,6 +179,18 @@ public class Main {
                         System.out.print("Introduce número de cuenta (Iban): ");
                         iban = teclado.next();
                         banco.obtenerSaldo(iban);
+                        break;
+                    case 7:
+                        System.out.println("ELIMINAR UNA CUENTA BANCARIA GUARDADA.");
+                        System.out.println("--------------------------------------");
+                        System.out.println("|---------------------------------------------------------------------------------------------------|");
+                        System.out.println("|                                                                                                   |");
+                        System.out.println("|   ADVERTENCIA. Se borrarán todos los datos El saldo del a cuenta debe ser cero para ser borrada.  |");
+                        System.out.println("|                                                                                                   |");
+                        System.out.println("|---------------------------------------------------------------------------------------------------|");
+                        System.out.print("Introduce el IBAN de la cuenta a eliminar: ");
+                        iban = teclado.next();
+                        banco.eliminarCuenta(iban);
                         break;
                 }
                 //EXCEPCIÓN DEL MENÚ
