@@ -99,45 +99,47 @@ public class Banco {
         return false;
     }
 
+
+
+    //-------------------------------------
+
+    private CuentaBancaria buscarCuenta (String iban){
+        CuentaBancaria cCuenta = null;
+        for (CuentaBancaria cuenta: bancaria){
+            if (cuenta.getIban().equals(iban)) {
+                cCuenta = cuenta;
+            }
+        }
+        return cCuenta;
+    }
+
+
     //SACAR DINERO DE LA CUENTA. PIDE IBAN Y CANTIDAD A RETIRAR.
 
-    public boolean retiradaCuenta(String iban, double retirada) {
+    public boolean retiradaCuenta(String iban, double retirada){
         if (retirada == 0) {
             throw new IllegalArgumentException("El importe a retirar no puede ser cero.");
         }
         if (retirada < 0) {
             throw new IllegalArgumentException("El importe a retirar no puede ser negativo.");
         }
-       /* for (CuentaBancaria cuenta: bancaria){
-            if (cuenta.getIban().equalsIgnoreCase(iban)){
-                cuenta.retiradaCuenta(retirada);
-                System.out.println("Se han retirado correctamente la cantidad de " + retirada + " €.");
-                break;
-            }
-            System.out.println("No existe la cuenta.");
-        }*/
 
-        for (CuentaBancaria cuenta: bancaria){
-            if (cuenta.getIban().equalsIgnoreCase(iban)){
-                if (cuenta.getSaldo()< retirada) {
-                    System.out.println("No hay fondos suficientes.");
-                    break;
-                }
-
-                cuenta.saldoRetirado(retirada);
-                System.out.println("Retirada de dinero realizada correctamente.");
-                return true;
-            }
+        CuentaBancaria cCuenta = buscarCuenta(iban);
+        if (cCuenta != null){
+            return cCuenta.retiradaCuenta(retirada);
         }
-       return true;
+
+        System.out.println("No existe la cuenta.");
+        return false;
     }
+
 
     //VER SALDO.
 
     public double obtenerSaldo(String iban){
         for (CuentaBancaria cuenta: bancaria){
-            if (cuenta.getIban().equalsIgnoreCase(iban)){
-                return cuenta.getSaldo();
+            if (cuenta.getIban().equals(iban)){
+                System.out.println("El saldo de la cuenta es de " + cuenta.getSaldo() + " euros.");
             }
         }
         return -1;

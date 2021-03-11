@@ -169,7 +169,7 @@ public class Main {
                         System.out.print("Introduce tu cuenta (Iban): ");
                         iban = teclado.next();
                         System.out.print("Cantidad que desea retirar: ");
-                        double retirada = teclado.nextFloat();
+                        double retirada = teclado.nextDouble();
                         banco.retiradaCuenta(iban, retirada);
                         break;
                     case 6:
@@ -177,7 +177,7 @@ public class Main {
                         System.out.println("----------------");
                         System.out.print("Introduce número de cuenta (Iban): ");
                         iban = teclado.next();
-
+                        banco.obtenerSaldo(iban);
                         break;
                 }
                 //EXCEPCIÓN DEL MENÚ

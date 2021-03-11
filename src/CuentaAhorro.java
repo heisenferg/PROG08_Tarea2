@@ -45,11 +45,12 @@ Constructores.
     @Override
     public boolean retiradaCuenta(double retirada) {
 
-        if (retirada < saldo){
+        if ((saldo-retirada) >= 0){
             saldo = saldo-retirada;
+            System.out.println("Retirada de " + retirada + " €, realizada correctamente.");
             return true;
-        }else if (saldo < retirada);
-            System.out.println("la cantidad tiene que ser inferior al saldo.");
+        }else
+            System.out.println("La cantidad no puede ser superior al saldo.");
         return false;
     }
 

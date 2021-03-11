@@ -71,7 +71,11 @@ public class CuentaCorrienteEmpresa extends CuentaBancaria{
 
     @Override
     public boolean retiradaCuenta(double retirada){
-        if ((saldo - retirada) > - maximo_descubierto) {
+        if ((saldo-retirada) >=0){
+            saldo = saldo-retirada;
+            System.out.println("Retirada de " + retirada + " €, realizada correctamente.");
+        }
+        else if ((saldo - retirada) > - maximo_descubierto) {
             double sacado = saldo - retirada;
             saldo = sacado - ( -sacado * (interes_descubierto / 100)) - comision_descubierto;
             System.out.println("Retirada realizada correctamente.");

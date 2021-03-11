@@ -64,9 +64,10 @@ Constructor
 
     @Override
     public boolean retiradaCuenta(double retirada) {
-        if (saldo > retirada) {
+        if (saldo-retirada >= 0) {
             saldo = saldo - retirada;
-
+            System.out.println("Retirada de " + retirada + " €, realizada correctamente.");
+            return true;
         } else
             System.out.println("No hay saldo disponible.");
         return false;

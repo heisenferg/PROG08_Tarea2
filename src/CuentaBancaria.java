@@ -119,7 +119,7 @@ public  class  CuentaBancaria implements Imprimible {
     }
 
     public boolean retiradaCuenta(double retirada){
-        if (retirada < saldo) {
+        if ((saldo-retirada) >= 0) {
             saldo = saldo - retirada;
             return true;
         } else {
