@@ -2,7 +2,7 @@ package Tarea2;
 
 
 import java.util.HashSet;
-import java.util.TreeSet;
+import java.util.Set;
 
 /**
  *
@@ -42,9 +42,7 @@ de Collection que almacena datos asociando una llave a un valor, lo cual acelera
     /*
     Insertar vehículo con los parámetros que le pasamos.
     Determinamos que busque la matrícula y si está guardada, nos devuelva
-    MATRICULA_GUARDADA que le indicamos previamente que era -2
-    Si el número de vehículos guardados es igual a la capacidad máxima, nos devuelve
-    LLENO que le indicamos que era -1; y si no, se guarda y nos devuelve
+    MATRICULA_GUARDADA que le indicamos previamente que era -2 y si no, se guarda y nos devuelve
     GUARDADO, que le indicamos que equivalía a 0.
     */
     public int insertarVehiculo(String marca, String matricula, String descripcion, String Nprop, String Dniprop, int km, double precio){
@@ -83,20 +81,18 @@ de Collection que almacena datos asociando una llave a un valor, lo cual acelera
         return false;
     }
 
-    //Método para eliminar vehículos.
+    //Método para eliminar vehículos. Pide matricula y elimina si coincide.
 
-    public void eliminarVehiculo(String matricula){
-        for (Vehiculo v1: coches){
-            if (v1.getMatricula().equals(matricula)){
+    public boolean eliminarVehiculo(String matricula){
+        for(Vehiculo v1 : coches) {
+            if (v1.getMatricula().equals(matricula)) {
                 coches.remove(v1);
-                System.out.println("El vehículo con matrícula " + v1.getMatricula() + " ha sido eliminado correctamente.");
-                break;
-            }
-            else
-                System.out.println("No existe vehículo con esa matrícula.\nNo se puede eliminar.");
-                break;
+                System.out.println("El vehículo ha sido eliminado correctamente.");
+                return true;
             }
         }
+        return false;
+    }
 
     }
 
